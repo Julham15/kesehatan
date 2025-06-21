@@ -49,8 +49,8 @@
                             </div>
 
                              <div class="mb-3">
-                                <label for="gambar" class="form-label">Gambar</label>
-                                <input type="text" class="form-control" id="gambar" name="gambar" required>
+                                <label for="deskripsi" class="form-label">Deskripsi</label>
+                                <input type="text" class="form-control" id="deskripsi" name="deskripsi" required>
                             </div>
                                 
                             <button type="submit" class="btn btn-info w-100 py-2">

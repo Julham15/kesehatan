@@ -17,7 +17,7 @@ class ObatanController extends Controller
             'nama' => 'required',
             'stok' => 'required',
             'harga' => 'required',
-            'gambar' => 'required'
+            'deskripsi' => 'required'
         ]);
 
         $obatan = obatan::create($validatedData);
@@ -34,7 +34,7 @@ class ObatanController extends Controller
              'nama' => 'required',
             'stok' => 'required',
             'harga' => 'required',
-            'gambar' => 'required'
+            'deskripsi' => 'required'
         ]);
         obatan::whereId($id)->update( $validatedData);
         return redirect('/obat')->with('succes','Berhasil diedit!');
@@ -55,5 +55,15 @@ class ObatanController extends Controller
         $obatan = obatan::all();
         }
     return view('Obat.index', compact('obatan'));
+    }
+    public function userIndex(Request $request)
+    {
+        $keyword = $request->input('search');
+        if ($keyword) {
+            $obatan = obatan::where('nama', 'like', "%$keyword%")->get();
+        } else {
+            $obatan = obatan::all();
+        }
+        return view('user.obat.index', compact('obatan'));
     }
 }

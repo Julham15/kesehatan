@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Pegawai</title>
+    <title>Daftar Obat | KesehatanApp</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
-<body class="bg-danger">
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">KesehatanApp</a>
+            <div>
+                <a href="{{ route('logout') }}" class="btn btn-outline-danger"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                   Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        </div>
+    </nav>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="display-5 fw-bold text-light">Daftar Obat</h1>
+            <h1 class="display-5 fw-bold text-primary">Daftar Obat</h1>
             <a href="{{ route('obat.create') }}" class="btn btn-success">
                 <i class="bi bi-plus-lg"></i> Tambah Data
             </a>
@@ -43,7 +57,7 @@
                                     <th>Nama</th>
                                     <th>Stok</th>
                                     <th>Harga</th>
-                                    <th>Gambar</th>
+                                    <th>Deskripsi</th>
                                     <th class="text-end"></th>
                                 </tr>
                             </thead>
@@ -52,8 +66,8 @@
                                 <tr>
                                     <td>{{ $data->nama }}</td>
                                     <td>{{ $data->stok }}</td>
-                                    <td><span class="badge bg-info">{{ $data->harga}}</span></td>
-                                     <td>{{ $data->gambar }}</td>
+                                    <td><span class="badge bg-info">{{ $data->harga }}</span></td>
+                                    <td>{{ $data->deskripsi }}</td>
                                     <td class="text-end">
                                         <div class="d-flex gap-2 justify-content-end">
                                             <a href="{{ route('obat.edit', $data->id) }}" class="btn btn-sm btn-outline-primary">
@@ -88,7 +102,9 @@
             </div>
         @endif
     </div>
-
+    <footer class="text-center py-3 text-muted small bg-white mt-4">
+        &copy; {{ date('Y') }} KesehatanApp. All rights reserved.
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

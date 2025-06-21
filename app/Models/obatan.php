@@ -10,5 +10,5 @@ class obatan extends Model
 {
     use HasFactory;
     protected $table = 'obatans';
-    protected $fillable = ['nama', 'stok','harga','gambar'];
+    protected $fillable = ['nama', 'stok','harga','deskripsi'];
 }

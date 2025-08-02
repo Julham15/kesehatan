@@ -70,7 +70,10 @@
                                     <td>{{ $data->deskripsi }}</td>
                                     <td class="text-end">
                                         <div class="d-flex gap-2 justify-content-end">
-                                            <a href="{{ route('obat.edit', $data->id) }}" class="btn btn-sm btn-outline-primary">
+                                            <a href="/obat/{{$data->id}}" class="btn btn-sm btn-outline-info">
+                                                 <i class="bi bi-eye"></i> Detail
+                                            </a>
+                                            <a href="{{ route('obat.edit', $data->id) }}" class="btn btn-sm btn-outline-success">
                                                 <i class="bi bi-pencil"></i> Edit
                                             </a>
                                             <form action="{{ route('obat.destroy', $data->id) }}" method="POST">

@@ -11,6 +11,7 @@ Route::get('/', function () {
 Route::get('/obat/create', [ObatanController::class, 'create'])->name('obat.create');;
 Route::post('/obat',[ObatanController::class, 'store'])->name('obat.store');
 Route::get('/obat/{id}/edit',[ObatanController::class, 'edit'])->name('obat.edit');
+Route::get('/obat/{id}', [ObatanController::class,'detail']);
 Route::put('/obat/{id}',[ObatanController::class, 'update'])->name('obat.update');
 Route::delete('/obat/{id}',[ObatanController::class, 'destroy'])->name('obat.destroy');
 Route::get('/obat', [ObatanController::class, 'index']);

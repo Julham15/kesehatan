@@ -17,10 +17,12 @@ class ObatanController extends Controller
             'nama' => 'required',
             'stok' => 'required',
             'harga' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg',
             'deskripsi' => 'required'
         ]);
-
-        $obatan = obatan::create($validatedData);
+        $gambar = $request->file('image')->store('gambar_obat', 'public');
+        $validatedData['image'] = $gambar;
+        obatan::create($validatedData);
         return redirect('/obat')->with('succes','obat sukses ditambahkan!');
     }
     public function edit($id)
@@ -30,12 +32,18 @@ class ObatanController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $obat = obatan::findOrFail($id);
         $validatedData = $request->validate([
-             'nama' => 'required',
+            'nama' => 'required',
             'stok' => 'required',
             'harga' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg',
             'deskripsi' => 'required'
         ]);
+        if ($request->hasFile('image')) {
+        $gambar = $request->file('image')->store('gambar_obat', 'public');
+        $obat->image = $gambar;
+    }
         obatan::whereId($id)->update( $validatedData);
         return redirect('/obat')->with('succes','Berhasil diedit!');
     }
@@ -66,4 +74,10 @@ class ObatanController extends Controller
         }
         return view('user.obat.index', compact('obatan'));
     }
+    public function detail($id){ 
+   $data = obatan::findOrFail($id); 
+   return view('obat.detail', [
+    'i'=>$data
+   ]);
+  }
 }

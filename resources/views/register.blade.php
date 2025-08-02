@@ -25,9 +25,6 @@
                                 <input type="email" name="email" class="form-control" placeholder="Email">
                             </div>
                             <div class="mb-3">
-                                <input type="text" name="role" class="form-control" placeholder="Role">
-                            </div>
-                            <div class="mb-3">
                                 <input type="password" name="password" class="form-control" placeholder="Password">
                             </div>
                             <div class="mb-3">
